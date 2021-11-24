@@ -1,175 +1,76 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
+import PropTypes from 'prop-types'
+
 
 export class News extends Component {
 
-    articles=[{
-        "source": { "id": "google-news", "name": "Google News" },
-        "author": "Dakin Andone, Keith Allen and David Williams, CNN",
-        "title": "A passenger's weapon accidentally discharged at the Atlanta airport, causing panic and halting flights",
-        "description": "The accidental discharge of a passenger's weapon in a security area of Hartsfield-Jackson Atlanta International Airport caused widespread panic Saturday afternoon, prompting a brief halt of departing flights over the busy travel weekend.",
-        "url": "https://www.cnn.com/2021/11/20/us/atlanta-airport-scare/index.html",
-        "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/211120141343-01-atlanta-airport-shooting-incident-1120-screengrab-super-tease.jpeg",
-        "publishedAt": "2021-11-21T03:14:00+00:00",
-        "content": "(CNN)The accidental discharge of a passenger's weapon in a security area of Hartsfield-Jackson Atlanta International Airport caused widespread panic Saturday afternoon, prompting a brief halt of depa… [+7451 chars]"
-    },
-    {
-        "source": { "id": "cbs-news", "name": "CBS News" },
-        "author": "CBS News",
-        "title": "U.S. COVID-19 cases rise heading into Thanksgiving",
-        "description": "Coronavirus infections are rising again in half the country, just as people begin traveling for Thanksgiving. More than 53 million people are expected to hit the road this holiday weekend, creating concerns of large indoor gatherings. Tom Wait has more.",
-        "url": "https://www.cbsnews.com/video/us-covid-19-cases-rise-heading-into-thanksgiving/",
-        "urlToImage": "https://cbsnews2.cbsistatic.com/hub/i/r/2021/11/21/3b1193c5-a81b-445c-8318-e9d84936e07b/thumbnail/1200x630/0beb63c4f2203359480e4674e63612f9/1120-en-wait-840397-640x360.jpg",
-        "publishedAt": "2021-11-21T01:59:32+00:00",
-        "content": "Watch CBSN Live\r\nCopyright © 2021 CBS Interactive Inc. All rights reserved.\r\nGet browser notifications for breaking news, live events, and exclusive reporting.\r\nNot NowTurn On"
-    },
-    {
-        "source": { "id": "cnn", "name": "CNN" },
-        "author": "Dakin Andone, Keith Allen and David Williams, CNN",
-        "title": "A passenger's weapon accidentally discharged at the Atlanta airport, causing panic and halting flights",
-        "description": "The accidental discharge of a passenger's weapon in a security area of Hartsfield-Jackson Atlanta International Airport caused widespread panic Saturday afternoon, prompting a brief halt of departing flights over the busy travel weekend.",
-        "url": "http://us.cnn.com/2021/11/20/us/atlanta-airport-scare/index.html",
-        "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/211120141343-01-atlanta-airport-shooting-incident-1120-screengrab-super-tease.jpeg",
-        "publishedAt": "2021-11-21T00:55:55Z",
-        "content": "(CNN)The accidental discharge of a passenger's weapon in a security area of Hartsfield-Jackson Atlanta International Airport caused widespread panic Saturday afternoon, prompting a brief halt of depa… [+7458 chars]"
-    },
-    {
-        "source": { "id": "axios", "name": "Axios" },
-        "author": "Kierra Frazier",
-        "title": "TSA screens highest number of air travelers since start of pandemic",
-        "description": "TSA expects to screen about 20 million air passengers during the Thanksgiving travel period.",
-        "url": "https://www.axios.com/tsa-record-numbers-travel-thanksgiving-d7cdf3ed-3114-48db-a164-d8719fe5f2d4.html",
-        "urlToImage": "https://images.axios.com/4SxGIpxwMLmfBHFoHNNDFBHP_l8=/0x124:3000x1812/1366x768/2021/11/20/1637450380554.jpg",
-        "publishedAt": "2021-11-20T23:42:19Z",
-        "content": "A new Morning Consult poll found that nearly 40% of people who traveled for business pre-pandemic predict they'll never take a business trip again. If that's true, it would be a massive blow to the a… [+331 chars]"
-    },
-    {
-        "source": { "id": "associated-press", "name": "Associated Press" },
-        "author": "BILL CORMIER",
-        "title": "Atlanta airport checkpoint chaos: Man grabs gun, it goes off",
-        "description": "ATLANTA (AP) — A passenger awaiting a bag search at the Atlanta airport's main security checkpoint reached in the bag and grabbed a firearm, and it went off, causing chaos among travelers and prompting a temporary FAA ground stop on flights Saturday afternoon…",
-        "url": "https://apnews.com/ae3562fb5685199c3f572c122e24bcef",
-        "urlToImage": "https://storage.googleapis.com/afs-prod/media/97b9c7c96a254592a1a06c3a33a8a9fb/1200.jpeg",
-        "publishedAt": "2021-11-20T21:47:37Z",
-        "content": "ATLANTA (AP) — A passenger awaiting a bag search at the Atlanta airport's main security checkpoint reached in the bag and grabbed a firearm, and it went off, causing chaos among travelers and prompti… [+4516 chars]"
-    },
-    {
-        "source": { "id": "nbc-news", "name": "NBC News" },
-        "author": "Minyvonne Burke",
-        "title": "Accidental gun discharge at Atlanta airport causes panic, departures halted",
-        "description": "An accidental gun discharge at Hartsfield–Jackson Atlanta International Airport Saturday afternoon caused panicked travelers to flee and halted departures.",
-        "url": "https://www.nbcnews.com/news/accidental-gun-discharge-atlanta-airport-causes-panic-departures-halte-rcna6248",
-        "urlToImage": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2021-11/211120-Hartsfield-Jackson-International-Airport-ew-251p-59ef39.jpg",
-        "publishedAt": "2021-11-20T20:23:41Z",
-        "content": "An accidental gun discharge at HartsfieldJackson Atlanta International Airport Saturday afternoon caused panicked travelers to flee and halted departures. \r\nThe airport tweeted that there was not an … [+798 chars]"
-    },
-    {
-        "source": { "id": "cbc-news", "name": "CBC News" },
-        "author": "CBC News",
-        "title": "Drivers flock to fill their tanks as B.C. imposes travel and gas restrictions amid flooding | CBC News",
-        "description": "Long lines of vehicles were seen snaking out of gas stations on Friday evening after British Columbia officials announced fuel restrictions for non-essential travellers in areas of the province affected by heavy rains and damaging floods.",
-        "url": "http://www.cbc.ca/news/canada/british-columbia/b-c-gas-rationing-nov-20-1.6256871",
-        "urlToImage": "https://i.cbc.ca/1.6256878.1637425590!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_620/long-lines-at-gas-stations.jpg",
-        "publishedAt": "2021-11-20T16:52:22.6207895Z",
-        "content": "Long lines of vehicles were seen snaking out of gas stations on Friday evening after British Columbia officials announced fuel restrictions for non-essential travellers in areas of the province affec… [+1639 chars]"
-    },
-    {
-        "source": { "id": "the-globe-and-mail", "name": "The Globe And Mail" },
-        "author": "Mike Hager, Xiao Xu, Nancy Macdonald",
-        "title": "B.C. rations gas amid shortage, orders restrictions on non-essential travel",
-        "description": "Flooding aftermath prompts new emergency orders that limit non-essential travellers to buying only 30 litres of fuel at a time, require people stay off roads unless driving for necessary business",
-        "url": "https://www.theglobeandmail.com/canada/article-bc-gas-shortage-fuel-rationing/",
-        "urlToImage": "https://www.theglobeandmail.com/resizer/iaTyEUUvXen21jHG8C2wJ3g8WME=/1200x799/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/tgam/2IHZ54AAAZPZZEO62SSVR555DA.JPG",
-        "publishedAt": "2021-11-20T00:04:59Z",
-        "content": "A pick up truck is seen on the Trans Canada highway after rainstorms lashed the western Canadian province of British Columbia, triggering emergency orders rationing gas and prohibiting non-essential … [+6554 chars]"
-    },
-    {
-        "source": { "id": "al-jazeera-english", "name": "Al Jazeera English" },
-        "author": "Al Jazeera",
-        "title": "UN sanctions three Houthis over Marib offensive, Saudi attacks",
-        "description": "Security Council blacklists three Houthi leaders, subjects them to a global asset freeze and a travel ban.",
-        "url": "http://www.aljazeera.com/news/2021/11/11/un-sanctions-houthi-rebels-over-marib-offensive-saudi-attacks",
-        "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2021/11/2021-11-02T180047Z_1961892019_RC2HMQ9YJOOG_RTRMADP_3_YEMEN-SECURITY-MARIB.jpg?resize=1200%2C630",
-        "publishedAt": "2021-11-11T02:20:52Z",
-        "content": "The United Nations Security Council has blacklisted three Houthi rebels linked to cross-border attacks from Yemen into Saudi Arabia and to fighting in the governments last stronghold in the countrys … [+2603 chars]"
-    },
-    {
-        "source": { "id": "msnbc", "name": "MSNBC" },
-        "author": "MSNBC",
-        "title": "Utah newlywed killed in head-on collision with wrong-way driver after wedding",
-        "description": "A just-married bride was killed after her wedding when a driver traveling the wrong way on a Utah interstate plowed into her car over the weekend, authorities said Sunday.",
-        "url": "https://www.nbcnews.com/news/us-news/utah-newlywed-killed-head-collision-wrong-way-driver-after-wedding-n1276390",
-        "urlToImage": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2021_32/3497901/210809-salt-lake-city-auto-crash-ac-1015p.jpg",
-        "publishedAt": "2021-08-10T02:41:36Z",
-        "content": "A just-married bride was killed after her wedding when a driver traveling the wrong way on a Utah interstate plowed into her car over the weekend, authorities said.\r\nThe bride, who was married Saturd… [+1227 chars]"
-    },
-    {
-        "source": { "id": "national-geographic", "name": "National Geographic" },
-        "author": "Heather Greenwood Davis",
-        "title": "Families are leading a new wave in Black travel. Here’s why",
-        "description": "For many parents, showing their kids the world is about both the past and the future.",
-        "url": "https://www.nationalgeographic.com/travel/2021/02/the-importance-of-travel-for-black-families.html",
-        "urlToImage": "https://www.nationalgeographic.com/content/dam/travel/2021-digital/black-family-travel/black-family-travel-2.jpg",
-        "publishedAt": "2021-02-17T14:37:24.3073832Z",
-        "content": null
+    static defaultProps={
+        country:'in',
+        pageSize:8,
+        category:'general'
+
     }
-]
-    constructor(){
-        super();
+
+    static propTypes={
+        country:PropTypes.string,
+        pageSize:PropTypes.number,
+        category:PropTypes.string,
+
+    };
+    capitalizeFirstLetter=(string) => string.charAt(0).toUpperCase() + string.slice(1);
+      
+
+    constructor(props){
+        super(props);
         this.state={
-            articles:this.articles,
+            articles:[],
             loading:false,
             page:1
         }
+        document.title=`${this.capitalizeFirstLetter(this.props.category)}-NewsMonkey`
     }
-    async componentDidMount(){
-        let url="https://newsapi.org/v2/top-headlines?country=in&apiKey=54973e577e34405cb7dbc6415ab549b4&page=1"
+
+    async updateNews(){
+        console.log(this.state.page,"immediate updateNews()")
+        let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=54973e577e34405cb7dbc6415ab549b4&page=${this.state.page}&pageSize=${this.props.pageSize}`
+        this.setState({loading:true})
         let data=await fetch(url);
         let parsedData= await data.json();
-        this.setState({articles :parsedData.articles, totalResults:parsedData.totalResults});
+        console.log(this.state.page)
+        this.setState({articles :parsedData.articles,
+             totalResults:parsedData.totalResults,                        
+             loading:false});
+
+
+    }
+    async componentDidMount(){
+        
+        this.updateNews()
     }
 
     handleOnPrevClick=async()=>{
 
-        let url=`https://newsapi.org/v2/top-headlines?country=in&apiKey=54973e577e34405cb7dbc6415ab549b4&page=${this.state.page-1}&pageSize=20`
-        let data=await fetch(url);
-        let parsedData= await data.json();
-
-        this.setState({
-            page:this.state.page-1,
-            articles :parsedData.articles
-
-        })
+        await this.setState({page:this.state.page-1})
+        this.updateNews()
 
     }
     handleOnNextClick=async()=>{
-
-
-        if(this.state.page+1>Math.ceil(this.state.totalResults/20)){}
-        else{
-            console.log("next")
-            let url=`https://newsapi.org/v2/top-headlines?country=in&apiKey=54973e577e34405cb7dbc6415ab549b4&page=${this.state.page+1}&pageSize=20`
-            let data=await fetch(url);
-            let parsedData= await data.json();
-    
-            this.setState({
-                page:this.state.page+1,
-                articles :parsedData.articles
-    
-            })
-        }
-        
-
+            await this.setState({page:this.state.page+1})
+            console.log(this.state.page,"next")
+            this.updateNews()
     }
     render() {
         return (
             <div className="container my-3">
-                <h2>NewsMonkey - Top Headlines</h2>
+                <h2 className="text-center" style={{margin:'35px'}}>{`NewsMonkey - Top Headlines on ${this.capitalizeFirstLetter(this.props.category)}`}</h2>
+                {this.state.loading && <Spinner/>}
                 <div className="row">
-                {this.state.articles.map((element)=>{
+                {!this.state.loading && this.state.articles.map((element)=>{
                     
                     return <div className="col-md-4" key ={element.url}>
-                                <NewsItem  title={element.title!==null? element.title:""} description={element.description!==null?element.description:""} imageUrl={element.urlToImage!==null?element.urlToImage:"https://images.moneycontrol.com/static-mcnews/2020/07/rupee-653x435.jpg"} newsUrl={element.url}/>
+                                <NewsItem author={element.author!==null?element.author:"unknown"} title={element.title!==null? element.title:""} description={element.description!==null?element.description:""} date={element.publishedAt!==null?element.publishedAt:""} imageUrl={element.urlToImage!==null?element.urlToImage:"https://images.moneycontrol.com/static-mcnews/2020/07/rupee-653x435.jpg"} newsUrl={element.url}/>
                             </div>
                     }
                     )
@@ -178,7 +79,7 @@ export class News extends Component {
 
                 <div className="container d-flex justify-content-between">
                 <button disabled={this.state.page<=1? true:false} type="button" className="btn btn-dark" onClick={this.handleOnPrevClick}>&larr; Previous</button>
-                <button type="button" className="btn btn-dark" onClick={this.handleOnNextClick}>Next &rarr;</button>
+                <button disabled={this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-dark" onClick={this.handleOnNextClick}>Next &rarr;</button>
                 </div>
             </div>
         )
